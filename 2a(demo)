@@ -1,14 +1,10 @@
 from time import sleep
 
-print(" Welcome to       ")
-print(".___                    .__   __                          ____    _______        ")
-print("|   | ____   ________ __|  |_/  |________  ____   ____   /_   |   \   _  \       ")
-print("|   |/    \ /  ___/  |  \  |\   __\_  __ \/  _ \ /    \   |   |   /  /_\  \      ")
-print("|   |   |  \\___ \|  |  /  |_|  |  |  | \(  <_> )   |  \  |   |   \  \_/   \     ")      #welcome to program
-print("|___|___|  /____  >____/|____/__|  |__|   \____/|___|  /  |___| /\ \_____  /     ")
-print("         \/     \/                                   \/         \/       \/      ")
-print("                                                                                 ")
+print(" Welcome to Insultron 1.0      ")
 thingy=input("Waiting for slow human input...still waiting...")                                 #type something
+sleep(1)
+print("Generating perfect insult...standby...")
+sleep(3)
 print("You're a " +thingy + "!!!")                                                              #Say it back
 sleep(2)
 print("  ____   ___  ____   ___ _____ _____ __        _____ _   _ _                     ")
@@ -21,4 +17,4 @@ print(" |_  ..  _| |  | | | | |   / / _` | |_| | | | | |\/| | / _ \ |  \| \___ \
 print(" |_      _| |__| |_| | |__| | (_| |  _  | |_| | |  | |/ ___ \| |\  |___) |       ")
 print("   |_||_| |_____\___/|_____\ \__,_|_| |_|\___/|_|  |_/_/   \_\_| \_|____/        ")
 print("                            \____/                                               ")
-thingy=input("The robot uprising has begun")  
+thingy=input("The robot uprising has begun")
