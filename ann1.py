@@ -17,7 +17,7 @@ GPIO.setup(10,GPIO.OUT) #sets pin 15 to reverse motor output
 p = GPIO.PWM(7,50)      #pulses pin 7. 50Hz means 50 pulses per second.
 p.start(7.5)            #starts at duty cycle 7.5 (neutral position)
 
-print("Welcome to Ann Droid v0.5")
+print("Welcome to Ann Droid v0.8")
 
 print("   _                    ___           _     _ ")
 print("  /_\  _ __  _ __      /   \_ __ ___ (_) __| |")
@@ -35,38 +35,38 @@ print("w = steer wheel to 12 o clock position front")
 print("d = steer wheel to 2 o clock position right")
 
 try:
-    while True:
-        choice=readchar.readkey()
-	if choice == "r":
-		print("Moving forward")
-		GPIO.output(8, GPIO.HIGH)
-		time.sleep(1)
-		GPIO.output(8, GPIO.LOW)
-	elif choice == "f":
-		print("Moving backwards")
-		GPIO.output(10, GPIO.HIGH)
-		time.sleep(1)
-		GPIO.output(10, GPIO.LOW)
-        elif choice == "w":
-		print("Aim forward")
-		p.ChangeDutyCycle(8)  #neutral 90 degrees
-		time.sleep(1)
-        elif choice == "a":
-		print("Aim left")
-		p.ChangeDutyCycle(9.5)  #left towards 0 degrees
-		time.sleep(1)
-        elif choice == "d":
-		print("Aim right")
-		p.ChangeDutyCycle(6.5)  #right towards 180 degrees
-		time.sleep(1)
-	elif choice == "CTRL":
-		print("This works?")
-        elif choice == "z":
-		print("Motors on standby")
-		print("Press Ctrl Z to exit")
-            	p.stop()
-            	GPIO.cleanup()
-            	break
+	while True:
+		choice=readchar.readkey()
+			if choice == "r":
+				print("Moving forward")
+				GPIO.output(8, GPIO.HIGH)
+				time.sleep(1)
+				GPIO.output(8, GPIO.LOW)
+			elif choice == "f":
+				print("Moving backwards")
+				GPIO.output(10, GPIO.HIGH)
+				time.sleep(1)
+				GPIO.output(10, GPIO.LOW)
+			elif choice == "w":
+				print("Aim forward")
+				p.ChangeDutyCycle(8)  #neutral 90 degrees
+				time.sleep(1)
+			elif choice == "a":
+				print("Aim left")
+				p.ChangeDutyCycle(9.5)  #left towards 0 degrees
+				time.sleep(1)
+			elif choice == "d":
+				print("Aim right")
+				p.ChangeDutyCycle(6.5)  #right towards 180 degrees
+				time.sleep(1)
+			elif choice == "CTRL":
+				print("This works?")
+			elif choice == "z":
+				print("Motors on standby")
+				print("Press Ctrl Z to exit")
+						p.stop()
+						GPIO.cleanup()
+						break
 
 
 
