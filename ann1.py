@@ -2,6 +2,7 @@
 
 import RPi.GPIO as GPIO  #GPIO's are General Purpose Inputs and Outputs. The pins.
 import time
+import readchar
 
 GPIO.setmode(GPIO.BOARD) #chooses pin labeling system. We're going to use pin numbers.
 
@@ -35,37 +36,43 @@ print("d = steer wheel to 2 o clock position right")
 
 try:
     while True:
-        choice=input("Please enter your command")
-
-        if choice == "e":
-            GPIO.output(8, GPIO.HIGH)
-            time.sleep(1)
-            GPIO.output(8, GPIO.LOW)
-        elif choice == "c":
-            GPIO.output(10, GPIO.HIGH)
-            time.sleep(1)
-            GPIO.output(10, GPIO.LOW)
+        choice=readchar.readkey()
+	if choice == "r":
+		print("Moving forward")
+		GPIO.output(8, GPIO.HIGH)
+		time.sleep(1)
+		GPIO.output(8, GPIO.LOW)
+	elif choice == "f":
+		print("Moving backwards")
+		GPIO.output(10, GPIO.HIGH)
+		time.sleep(1)
+		GPIO.output(10, GPIO.LOW)
         elif choice == "w":
-            p.ChangeDutyCycle(8)  #neutral 90 degrees
-            time.sleep(1)
+		print("Aim forward")
+		p.ChangeDutyCycle(8)  #neutral 90 degrees
+		time.sleep(1)
         elif choice == "a":
-            p.ChangeDutyCycle(9.5)  #left towards 0 degrees
-            time.sleep(1)
+		print("Aim left")
+		p.ChangeDutyCycle(9.5)  #left towards 0 degrees
+		time.sleep(1)
         elif choice == "d":
-            p.ChangeDutyCycle(6.5)  #right towards 180 degrees
-            time.sleep(1)
-        elif choice == "x":
-            print("Motors on standby")
-            print("Press Ctrl Z to exit")
-            p.stop()
-            GPIO.cleanup()
-            break
+		print("Aim right")
+		p.ChangeDutyCycle(6.5)  #right towards 180 degrees
+		time.sleep(1)
+	elif choice == "CTRL":
+		print("This works?")
+        elif choice == "z":
+		print("Motors on standby")
+		print("Press Ctrl Z to exit")
+            	p.stop()
+            	GPIO.cleanup()
+            	break
 
 
 
 
 except KeyboardInterrupt: #if you press ctrl z
-    p.stop()              #pulses will stop
+   		 p.stop()              #pulses will stop
 
-    GPIO.cleanup()        #stops all signals to pins
+   		 GPIO.cleanup()        #stops all signals to pins
 
