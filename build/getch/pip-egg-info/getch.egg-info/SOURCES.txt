@@ -1,0 +1,5 @@
+getchmodule.c
+pip-egg-info/getch.egg-info/PKG-INFO
+pip-egg-info/getch.egg-info/SOURCES.txt
+pip-egg-info/getch.egg-info/dependency_links.txt
+pip-egg-info/getch.egg-info/top_level.txt
