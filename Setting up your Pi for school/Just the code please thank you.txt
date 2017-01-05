@@ -60,3 +60,6 @@ sudo pip install pibrella
 
 
 //need to paste this in from my old Rpi
+
+#the code below allows you to hold a key to eg. drive a car forward (without having to press enter)
+sudo pip install readchar    
