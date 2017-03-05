@@ -6,7 +6,7 @@ import datetime
 #account info
 to = 'RPiTime@gmail.com'
 gmail_user = 'RPiTime@gmail.com'
-gmail_password = '12345616'
+gmail_password = '123456'
 smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 smtpserver.ehlo()
 smtpserver.starttls()
