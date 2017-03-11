@@ -34,20 +34,21 @@ def distcheck():
   distance = round(distance, 2)
 
   print "Distance:",distance,"cm"
-
+  return distance
   
 #the new bit that measures speed
-  
-distcheck()
-dist1=distance
 
-time.sleep(0.5)
+interval=int(input("Choose your interval time"))
 
-distcheck()
-dist2=distance
+dist1=distcheck()
+
+time.sleep(interval)
+
+dist2=distcheck()
+
 
 displacement=dist2-dist1
-velocity=displacement/0.5
+velocity=displacement/interval
 
 velocity = round(velocity, 2)
 
