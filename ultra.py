@@ -14,22 +14,46 @@ GPIO.output(TRIG, False)
 print "Waiting For Sensor To Settle"
 time.sleep(2)
 
-GPIO.output(TRIG, True)
-time.sleep(0.00001)
-GPIO.output(TRIG, False)
 
-while GPIO.input(ECHO)==0:
-  pulse_start = time.time()
+def distcheck():
 
-while GPIO.input(ECHO)==1:
-  pulse_end = time.time()
+  GPIO.output(TRIG, True)  #fires a pulse
+  time.sleep(0.00001)
+  GPIO.output(TRIG, False)
 
-pulse_duration = pulse_end - pulse_start
+  while GPIO.input(ECHO)==0:  #measure some times
+    pulse_start = time.time()
 
-distance = pulse_duration * 17150
+  while GPIO.input(ECHO)==1:
+    pulse_end = time.time()
 
-distance = round(distance, 2)
+  pulse_duration = pulse_end - pulse_start  #does the maths
 
-print "Distance:",distance,"cm"
+  distance = pulse_duration * 17150
+
+  distance = round(distance, 2)
+
+  print "Distance:",distance,"cm"
+
+  
+#the new bit that measures speed
+  
+distcheck()
+dist1=distance
+
+time.sleep(0.5)
+
+distcheck()
+dist2=distance
+
+displacement=dist2-dist1
+velocity=displacement/0.5
+
+velocity = round(velocity, 2)
+
+print("Your velocity is")
+print(velocity)
 
 GPIO.cleanup()
+
+
