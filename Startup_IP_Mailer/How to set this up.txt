@@ -98,6 +98,9 @@ Sudo python Startup_maily.py
 
 Now check your gmail. You should have one email from you pi!
 
+Make sure your check your're getting the mail before going on to autostart below. You should get the
+email every time you run the script.
+
 
 ##########################################################################################################
 
@@ -110,6 +113,32 @@ Running the mailer on boot:
 
 Type:
 
+
+UPDATED METHOD FOR PIXEL NEW PI: 12 03 17
+
+If you want a script to run when you boot into the LXDE environment...
+
+Navigate to the LXDE folder. Type:
+
+cd.config/lxsession/LXDE-pi
+
+Open the autostart file in that folder. Type:
+
+sudo nano autostart
+
+On the last line, enter in the location of your maily startup python script.
+
+@ sudo python maily.py
+
+Type Ctrl+O  to save.
+
+Type Ctrl+X  to exit. 
+
+Type sudo reboot to restart and check if it works.
+
+#############################################
+
+OLD METHOD THAT USED TO WORK WITH OLDER PI:
 
 sudo nano /etc/rc.local
  
