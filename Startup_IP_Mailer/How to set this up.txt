@@ -120,7 +120,8 @@ If you want a script to run when you boot into the LXDE environment...
 
 Navigate to the LXDE folder. Type:
 
-cd.config/lxsession/LXDE-pi
+cd ~/.config/lxsession/LXDE-pi
+
 
 Open the autostart file in that folder. Type:
 
