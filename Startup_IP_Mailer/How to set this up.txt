@@ -129,7 +129,7 @@ sudo nano autostart
 
 On the last line, enter in the location of your maily startup python script.
 
-@ sudo python maily.py
+@sudo python Startup_maily.py
 
 Type Ctrl+O  to save.
 
