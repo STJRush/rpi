@@ -39,51 +39,52 @@ def sensorf():
 
 
 
-print("Welcome to the Awesome Robot!!!")
+print("Toy car. ReadChar. Sense.")
 sleep(2)
 
 while True:
 
     key=readchar.readkey()
 
-    if key=="1":
-        GPIO.output(17, GPIO.HIGH)
+    if key=="w": #forward
+        
         GPIO.output(24, GPIO.HIGH)
-        GPIO.output(16, GPIO.HIGH)
+        
+        sensorf()
+        
+        GPIO.output(24, GPIO.LOW)
+        
+
+
+    elif key=="a": #left
+        GPIO.output(17, GPIO.HIGH)
         sensorf()
         GPIO.output(17, GPIO.LOW)
-        GPIO.output(24, GPIO.LOW)
-        GPIO.output(16, GPIO.LOW)
 
-
-    elif key=="2":
-        GPIO.output(17, GPIO.HIGH)
-        sensorf()
-        GPIO.output(17, GPIO.LOW)
-
-    elif key=="3":
+    elif key=="q": #forward and left
         GPIO.output(24, GPIO.HIGH)
+	GPIO.output(17, GPIO.HIGH)
         sensorf()
         GPIO.output(24, GPIO.LOW)
+	GPIO.output(17, GPIO.LOW)
 
-    elif key=="4":
+    elif key=="d": #right
         GPIO.output(27, GPIO.HIGH)
-        sleep(0.4)
+        sensorf()
         GPIO.output(27, GPIO.LOW)
 
-    elif key=="5":
+    elif key=="s": #reverse 
         GPIO.output(23, GPIO.HIGH)
-        sleep(0.4)
+        sensorf()
         GPIO.output(23, GPIO.LOW)
 
-    elif key=="6":
+    elif key=="e": #forward and right
+        GPIO.output(24, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
-        GPIO.output(23, GPIO.HIGH)
-        GPIO.output(26, GPIO.HIGH)
-        sleep(0.4)
+	sensorf()
+        GPIO.output(24, GPIO.LOW)
         GPIO.output(27, GPIO.LOW)
-        GPIO.output(23, GPIO.LOW)
-        GPIO.output(26, GPIO.LOW)
+        
 
     elif key=="z":
         GPIO.cleanup()
