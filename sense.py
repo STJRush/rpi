@@ -1,22 +1,21 @@
-#Only in PYTHON2.7
+#Only in PYTHON2.7 as it uses readchar
 import RPi.GPIO as GPIO #GPIO Libraries
 from time import sleep #Sleep Functions
-import readchar #keyboards
+import readchar #allows you to hold down a key instead of hitting enter.
 
 GPIO.setwarnings(False)#Blocks error warnings
 GPIO.setmode(GPIO.BCM) #Setting Up
 
-GPIO.setup(23, GPIO.OUT) #back right
-GPIO.setup(24, GPIO.OUT) #front right
-GPIO.setup(17, GPIO.OUT) #front left
-GPIO.setup(27, GPIO.OUT) #back left
-GPIO.setup(26, GPIO.OUT) #red led
-GPIO.setup(16, GPIO.OUT) #green led
+GPIO.setup(23, GPIO.OUT) #reverse
+GPIO.setup(24, GPIO.OUT) #forwards
+GPIO.setup(17, GPIO.OUT) #left
+GPIO.setup(27, GPIO.OUT) #right
+
 GPIO.setup(21, GPIO.IN)  #Reads output from the IR motion sensor
 
 def sensorf():
-    i = 1
-    while i < 6:
+    i = 0           #resets count to zero
+    while i < 5:    #checks sensor 5 times.
 
         sensor=GPIO.input(21)
 
@@ -39,7 +38,7 @@ def sensorf():
 
 
 
-print("Toy car. ReadChar. Sense.")
+print("Code for Toy car. ReadChar. Sense. Python 2.7")
 sleep(2)
 
 while True:
@@ -47,46 +46,70 @@ while True:
     key=readchar.readkey()
 
     if key=="w": #forward
-        
-        GPIO.output(24, GPIO.HIGH)
-        
-        sensorf()
-        
-        GPIO.output(24, GPIO.LOW)
-        
-
+        print("forward")
+        GPIO.output(24, GPIO.HIGH)       
+        sensorf()        
+        GPIO.output(24, GPIO.LOW)        
 
     elif key=="a": #left
+        print("left")
         GPIO.output(17, GPIO.HIGH)
         sensorf()
         GPIO.output(17, GPIO.LOW)
 
     elif key=="q": #forward and left
+        print("forward and left")
         GPIO.output(24, GPIO.HIGH)
 	GPIO.output(17, GPIO.HIGH)
         sensorf()
         GPIO.output(24, GPIO.LOW)
 	GPIO.output(17, GPIO.LOW)
 
-    elif key=="d": #right
-        GPIO.output(27, GPIO.HIGH)
-        sensorf()
-        GPIO.output(27, GPIO.LOW)
-
-    elif key=="s": #reverse 
-        GPIO.output(23, GPIO.HIGH)
-        sensorf()
-        GPIO.output(23, GPIO.LOW)
-
     elif key=="e": #forward and right
+        print("forward and right")
         GPIO.output(24, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
 	sensorf()
         GPIO.output(24, GPIO.LOW)
         GPIO.output(27, GPIO.LOW)
-        
 
-    elif key=="z":
+    elif key=="d": #right
+        print("right")
+        GPIO.output(27, GPIO.HIGH)
+        sensorf()
+        GPIO.output(27, GPIO.LOW)
+
+    elif key=="s": #reverse
+        print("reverse")
+        GPIO.output(23, GPIO.HIGH)
+        sensorf()
+        GPIO.output(23, GPIO.LOW)
+
+    elif key=="c": #reverse and right
+        print("reverse and right")
+        GPIO.output(23, GPIO.HIGH)
+        GPIO.output(27, GPIO.HIGH)
+	sensorf()
+        GPIO.output(23, GPIO.LOW)
+        GPIO.output(27, GPIO.LOW)
+
+    elif key=="z": #reverse and right
+        print("Forward and right")
+        GPIO.output(23, GPIO.HIGH)
+        GPIO.output(27, GPIO.HIGH)
+	sensorf()
+        GPIO.output(23, GPIO.LOW)
+        GPIO.output(27, GPIO.LOW)
+
+    elif key=="0": #Everything off
+        GPIO.output(23, GPIO.LOW)
+        GPIO.output(24, GPIO.LOW)
+        GPIO.output(17, GPIO.LOW)
+        GPIO.output(27, GPIO.LOW)
+
+        
+    elif key=="k":
         GPIO.cleanup()
+        print("shutting down motors...")
         sleep(1)
         break   
