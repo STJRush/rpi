@@ -41,9 +41,24 @@ def sensorf():
 print("Code for Toy car. ReadChar. Sense. Python 2.7")
 sleep(2)
 
+
+print("select control method")
+print("To hold down keys to drive, type... h")
+print("To hit enter each time to drive, type... y")
+choice=raw_input("Type now.")
+
+
 while True:
 
-    key=readchar.readkey()
+    if choice=="h"
+
+        key=readchar.readkey()
+
+    elif choice=="y"
+        key=rawinput("Enter command")
+
+
+        
 
     if key=="w": #forward
         print("forward")
