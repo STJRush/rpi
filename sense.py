@@ -11,26 +11,27 @@ GPIO.setup(24, GPIO.OUT) #forwards
 GPIO.setup(17, GPIO.OUT) #left
 GPIO.setup(27, GPIO.OUT) #right
 
-GPIO.setup(21, GPIO.IN)  #Reads output from the IR motion sensor
+GPIO.setup(22, GPIO.IN)  #Reads output from the IR motion sensor
 
 def sensorf():
     i = 0           #resets count to zero
-    while i < 5:    #checks sensor 5 times.
+    while i < 20:    #checks sensor 5 times.
 
-        sensor=GPIO.input(21)
+        sensor=GPIO.input(22)
 
         if sensor==1: #When output from motion sensor is LOW
             print("No Obstructions!!")
-            sleep(1)
+            sleep(0.1)
         elif sensor==0: #When output from motion sensor is HIGH
             print("Obstruction detected")
-            sleep(1)
+            
             GPIO.output(23, GPIO.LOW) #back right
             GPIO.output(24, GPIO.LOW) #front right
             GPIO.output(17, GPIO.LOW) #front left
 	    GPIO.output(27, GPIO.LOW) #back left
+	    sleep(1)
 
-	elif i==5:
+	elif i==20:
 		break
 
         i = i+1
@@ -50,12 +51,12 @@ choice=raw_input("Type now.")
 
 while True:
 
-    if choice=="h"
+    if choice=="h":
 
         key=readchar.readkey()
 
-    elif choice=="y"
-        key=rawinput("Enter command")
+    elif choice=="y":
+        key=raw_input("Enter command")
 
 
         
