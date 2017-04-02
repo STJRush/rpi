@@ -32,7 +32,7 @@ def sensorf():  #SENSOR CODE
             GPIO.output(17, GPIO.LOW)
             GPIO.output(27, GPIO.LOW)
 
-	        sleep(1)    #stares down the object blocking it's path
+	    sleep(1)    #stares down the object blocking it's path
 
             GPIO.output(23, GPIO.HIGH) #reverses after detecting obstacle
             sleep(1)
@@ -55,14 +55,14 @@ def auto(): #AUTOROBOT MODE
         if number > 5:
             GPIO.output(24, GPIO.HIGH)  #forward and left robot mode
             GPIO.output(17, GPIO.HIGH)
-            sensor(f)
+            sensorf()
             GPIO.output(24, GPIO.LOW)
             GPIO.output(17, GPIO.HIGH)
 
         if number < 5:
             GPIO.output(24, GPIO.HIGH)  #forward and left robot mode
             GPIO.output(17, GPIO.HIGH)
-            sensor(f)
+            sensorf()
             GPIO.output(24, GPIO.LOW)
             GPIO.output(17, GPIO.HIGH)
 
@@ -71,6 +71,7 @@ print("Code for Toy car. ReadChar. Sense. Python 2.7")
 print("select control method")
 print("To hold down keys to drive, type... h")
 print("To hit enter each time to drive, type... y")
+print("for auto robot drive, type n")
 choice=raw_input("Type now.")
 
 
@@ -102,16 +103,16 @@ while True: #MODE SELECTION MENU
     elif key=="q": #forward and left
         print("forward and left")
         GPIO.output(24, GPIO.HIGH)
-	    GPIO.output(17, GPIO.HIGH)
+	GPIO.output(17, GPIO.HIGH)
         sensorf()
         GPIO.output(24, GPIO.LOW)
-	    GPIO.output(17, GPIO.LOW)
+	GPIO.output(17, GPIO.LOW)
 
     elif key=="e": #forward and right
         print("forward and right")
         GPIO.output(24, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
-	    sensorf()
+	sensorf()
         GPIO.output(24, GPIO.LOW)
         GPIO.output(27, GPIO.LOW)
 
@@ -131,7 +132,7 @@ while True: #MODE SELECTION MENU
         print("reverse and right")
         GPIO.output(23, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
-	    sensorf()
+	sensorf()
         GPIO.output(23, GPIO.LOW)
         GPIO.output(27, GPIO.LOW)
 
@@ -139,7 +140,7 @@ while True: #MODE SELECTION MENU
         print("Forward and right")
         GPIO.output(23, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
-	    sensorf()
+	sensorf()
         GPIO.output(23, GPIO.LOW)
         GPIO.output(27, GPIO.LOW)
 
