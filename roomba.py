@@ -61,10 +61,10 @@ def auto(): #AUTOROBOT MODE
 
         if number < 5:
             GPIO.output(24, GPIO.HIGH)  #forward and left robot mode
-            GPIO.output(17, GPIO.HIGH)
+            GPIO.output(27, GPIO.HIGH)
             sensorf()
             GPIO.output(24, GPIO.LOW)
-            GPIO.output(17, GPIO.HIGH)
+            GPIO.output(27, GPIO.HIGH)
 
 #PROGRAM STARTS HERE
 print("Code for Toy car. ReadChar. Sense. Python 2.7")
