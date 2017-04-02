@@ -1,7 +1,6 @@
 import readchar
 
 while True:
-	c = readchar.readchar()
 	key = readchar.readkey()
 
 	if key == "w":
