@@ -67,6 +67,7 @@ def auto(): #AUTOROBOT MODE
                 stop()
     except KeyboardInterrupt:
         print("MANUAL OVERRIDE")
+	stop()
 
 
 #Which control functions are tied to GPIO switches
@@ -131,7 +132,7 @@ while True: #MODE SELECTION MENU
         print("You don't need a compliment")
         sleep(2)
         print("Because you're already amazing!!! :D")
-
+	sleep(1)
         #MOTOR CONTROLS
 
     if key=="w": #forward
