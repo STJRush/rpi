@@ -4,7 +4,7 @@
                  _|                       ___/                                       
 Printed in old school .txt so your slow as snails Raspberry pi can handle it.
 
-Written by Daniel Murray and supported by St.Josephs Secondary School in Dublin, Ireland.
+Written by Daniel Murray and supported by St.Josephs Secondary School in Rush Co. Dublin, Ireland.
 
 
 #######################################################################
