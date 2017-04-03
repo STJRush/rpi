@@ -1,3 +1,5 @@
+#Only for Python 2.7
+#Very Important!!!!!!!!!
 import readchar
 
 while True:
