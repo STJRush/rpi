@@ -41,28 +41,32 @@ def sensorf():  #SENSOR CODE
 
 
 def auto(): #AUTOROBOT MODE
+    print("Entering ROOMBA mode")
+    print("Press CTRL+X to exit")
+    sleep(0.5)
+    try:
+        while True:
 
-    while True:
+            number=random.random()
+            number=10*number
 
-        number=random.random()
-        number=10*number
+            if number > 5:
+                right()
+                sleep(3)
+                stop()
+                fwd()
+                sensorf()
+                stop()
 
-        if number > 5:
-            right()
-            sleep(3)
-            stop()
-            fwd()
-            sensorf()
-            stop()
-
-        if number < 5:
-            left()
-            sleep(3)
-            stop()
-            fwd()  #forward and left robot mode
-            sensorf()
-            stop()
-
+            if number < 5:
+                left()
+                sleep(3)
+                stop()
+                fwd()  #forward and left robot mode
+                sensorf()
+                stop()
+    except KeyboardInterrupt:
+        print("MANUAL OVERRIDE")
 
 
 #Which control functions are tied to GPIO switches
@@ -91,24 +95,40 @@ def stop():
 
 
 #PROGRAM STARTS HERE
-print("Code for Toy car. ReadChar. Sense. Python 2.7")
-print("select control method")
-print("To hold down keys to drive, type... h")
-print("To hit enter each time to drive, type... y")
-print("for auto robot drive, type n")
+print("")
+print("    ________  ____                        __          ____                      ")
+print("   /  _/ __ \/ __ \____  ____  ____ ___  / /_  ____ _/ __ \____ _   _____  _____")
+print("   / // /_/ / /_/ / __ \/ __ \/ __ `__ \/ __ \/ __ `/ /_/ / __ \ | / / _ \/ ___/")
+print(" _/ // _, _/ _, _/ /_/ / /_/ / / / / / / /_/ / /_/ / _, _/ /_/ / |/ /  __/ /    ")
+print("/___/_/ |_/_/ |_|\____/\____/_/ /_/ /_/_.___/\__,_/_/ |_|\____/|___/\___/_/     ")
+print("                                                                                ")
+
+
+
+
+print("Welcome to IR_Rooba_Rover. Use Python 2.7")
+print("Please select your control method")
+print("-To hold down WASD to drive, type... 1")
+print("-To hit WASD then enter each time to drive, type... 2")
+print("-For autonomous robot roomba mode, type... 3")
+print("-For a compliment, type... 4")
 choice=raw_input("Type now.")
 
 
 while True: #MODE SELECTION MENU
 
-    if choice=="h":
+    if choice=="1":
 
         key=readchar.readkey()  #choose "hold down key" steering mode
 
-    elif choice=="y":
+    elif choice=="2":
         key=raw_input("Enter command")  #choose hit "enter" steering mode
-    elif choice=="n":
+    elif choice=="3":
         auto()
+    elif choice=="4":
+        print("You don't need a compliment")
+        sleep(2)
+        print("Because you're already amazing!!! :D")
 
         #MOTOR CONTROLS
 
