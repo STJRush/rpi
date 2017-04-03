@@ -28,7 +28,7 @@ def sensorf():  #SENSOR CODE
         elif sensor==0: #When output from motion sensor is HIGH
             print("Obstruction detected")
             stop()
-	        sleep(1)    #stares down the object blocking it's path
+	    sleep(1)    #stares down the object blocking it's path
             rev()       #reverses after detecting obstacle
             sleep(4)
             stop()
