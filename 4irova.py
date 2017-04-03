@@ -95,27 +95,29 @@ def stop():
 
 
 #PROGRAM STARTS HERE
-print("")
-print("    ________  ____                        __          ____                      ")
-print("   /  _/ __ \/ __ \____  ____  ____ ___  / /_  ____ _/ __ \____ _   _____  _____")
-print("   / // /_/ / /_/ / __ \/ __ \/ __ `__ \/ __ \/ __ `/ /_/ / __ \ | / / _ \/ ___/")
-print(" _/ // _, _/ _, _/ /_/ / /_/ / / / / / / /_/ / /_/ / _, _/ /_/ / |/ /  __/ /    ")
-print("/___/_/ |_/_/ |_|\____/\____/_/ /_/ /_/_.___/\__,_/_/ |_|\____/|___/\___/_/     ")
-print("                                                                                ")
-
-
-
-
-print("Welcome to IR_Rooba_Rover. Use Python 2.7")
-print("Please select your control method")
-print("-To hold down WASD to drive, type... 1")
-print("-To hit WASD then enter each time to drive, type... 2")
-print("-For autonomous robot roomba mode, type... 3")
-print("-For a compliment, type... 4")
-choice=raw_input("Type now.")
-
 
 while True: #MODE SELECTION MENU
+    print("")
+    print("    ________  ____                        __          ____                      ")
+    print("   /  _/ __ \/ __ \____  ____  ____ ___  / /_  ____ _/ __ \____ _   _____  _____")
+    print("   / // /_/ / /_/ / __ \/ __ \/ __ `__ \/ __ \/ __ `/ /_/ / __ \ | / / _ \/ ___/")
+    print(" _/ // _, _/ _, _/ /_/ / /_/ / / / / / / /_/ / /_/ / _, _/ /_/ / |/ /  __/ /    ")
+    print("/___/_/ |_/_/ |_|\____/\____/_/ /_/ /_/_.___/\__,_/_/ |_|\____/|___/\___/_/     ")
+    print("                                                                                ")
+
+
+
+
+    print("Welcome to IR_Rooba_Rover. Use Python 2.7")
+    print("Please select your control method")
+    print("-To hold down WASD to drive, type... 1")
+    print("-To hit WASD then enter each time to drive, type... 2")
+    print("-For autonomous robot roomba mode, type... 3")
+    print("-For a compliment, type... 4")
+    choice=raw_input("Type now.")
+
+
+    key="placeholder"
 
     if choice=="1":
 
