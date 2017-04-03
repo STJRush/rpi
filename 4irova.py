@@ -42,8 +42,8 @@ def sensorf():  #SENSOR CODE
 
 def auto(): #AUTOROBOT MODE
     print("Entering ROOMBA mode")
-    print("Press CTRL+X to exit")
-    sleep(0.5)
+    print("Press CTRL+C to exit")
+    sleep(1)
     try:
         while True:
 
@@ -68,6 +68,7 @@ def auto(): #AUTOROBOT MODE
     except KeyboardInterrupt:
         print("MANUAL OVERRIDE")
 	stop()
+	sleep(1)
 
 
 #Which control functions are tied to GPIO switches
