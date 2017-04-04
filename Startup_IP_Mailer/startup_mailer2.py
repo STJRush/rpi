@@ -3,7 +3,9 @@ import smtplib
 import socket
 from email.mime.text import MIMEText
 import datetime
+from time import sleep
 #account info
+sleep(15)
 to = 'RPiTime@gmail.com'
 gmail_user = 'RPiTime@gmail.com'
 gmail_password = '123456'
