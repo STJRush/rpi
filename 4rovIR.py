@@ -16,11 +16,11 @@ GPIO.setup(25, GPIO.IN)     #sensor setup
 
 
 ########### the sensor check function ##########################
-def  sensorcheck:()
+def  sensorcheck():
 
     i=0                             #starts a counter at zero
 
-    while i<5:   
+    while i<15:   
         sensor=GPIO.input(25)       #this reads from the sensor
 
         if sensor==1:               #this means there is no signal
@@ -35,7 +35,7 @@ def  sensorcheck:()
             GPIO.output(23, GPIO.LOW)
             GPIO.output(24, GPIO.LOW)
             
-        elif i=5:                   # once the counter gets to five
+        elif i==15:                   # once the counter gets to five
             break                   # break out of the function, resume the program.
                 
         i=i+1                       #counts to 5
