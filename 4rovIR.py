@@ -42,7 +42,8 @@ def  sensorcheck():
     
 ##################################################################################
     
-    
+print("Use the WASD keys and hit return to drive. W is forward, S is back etc.")
+print("The rover will stop if it detects an object")
 
 while True:
 
