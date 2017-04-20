@@ -67,7 +67,7 @@ def auto(): #AUTOROBOT MODE
             GPIO.output(27, GPIO.HIGH)
 
 #PROGRAM STARTS HERE
-print("Code for Toy car. ReadChar. Sense. Python 2.7")
+print("Code for Toy Car - ReadChar - Sense - Python 2.7")
 print("select control method")
 print("To hold down keys to drive, type... h")
 print("To hit enter each time to drive, type... y")
@@ -151,7 +151,7 @@ while True: #MODE SELECTION MENU
         GPIO.output(27, GPIO.LOW)
 
         
-    elif key=="k":
+    elif key=="k": #shutting down the motors
         GPIO.cleanup()
         print("shutting down motors...")
         sleep(1)
