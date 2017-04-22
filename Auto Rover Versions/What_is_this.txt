@@ -1,0 +1,6 @@
+Each of the 11 rovers have slightly different
+wiring so there are slight changes in which number
+GPIO pins eg. 24, 23, 17, 27 go forward, back, right etc.
+
+This folder contains a version of the rover driving code
+that will work for each specific rover. 
