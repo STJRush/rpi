@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Only in PYTHON2.7 as it uses readchar
 import RPi.GPIO as GPIO #GPIO Libraries
 from time import sleep #Sleep Functions
@@ -13,13 +14,13 @@ GPIO.setup(24, GPIO.OUT) #left wheels reverse
 GPIO.setup(17, GPIO.OUT) #right wheels reverse
 GPIO.setup(27, GPIO.OUT) #right wheels forward
 
-GPIO.setup(22, GPIO.IN)  #Reads output from the IR motion sensor
+GPIO.setup(25, GPIO.IN)  #Reads output from the IR motion sensor
 
 def sensorf():  #SENSOR CODE
     i = 0           #resets count to zero
     while i < 20:    #checks sensor 5 times.
 
-        sensor=GPIO.input(22)
+        sensor=GPIO.input(25)
 
         if sensor==1: #When output from motion sensor is LOW
             print("No Obstructions!!")
@@ -74,20 +75,20 @@ def auto(): #AUTOROBOT MODE
 #Which control functions are tied to GPIO switches
 
 def fwd():
-    GPIO.output(23, GPIO.HIGH)          #THESE ARE WHAT YOU SHOULD CHANGE IF
+    GPIO.output(24, GPIO.HIGH)          #THESE ARE WHAT YOU SHOULD CHANGE IF
     GPIO.output(27, GPIO.HIGH)          #YOUR ROVER IS WIRED ANOTHER WAY
                                         #FIXING THESE WILL FIX EVERYTHING
 def rev():
-    GPIO.output(24, GPIO.HIGH)
+    GPIO.output(23, GPIO.HIGH)
     GPIO.output(17, GPIO.HIGH)
 
 def left():
-    GPIO.output(24, GPIO.HIGH)
+    GPIO.output(23, GPIO.HIGH)
     GPIO.output(27, GPIO.HIGH)
 
 def right():
-    GPIO.output(23, GPIO.HIGH)
-    GPIO.output(27, GPIO.HIGH)
+    GPIO.output(24, GPIO.HIGH)
+    GPIO.output(17, GPIO.HIGH)
 
 def stop():
     GPIO.output(23, GPIO.LOW)
@@ -116,17 +117,34 @@ while True: #MODE SELECTION MENU
     print("-To hit WASD then enter each time to drive, type... 2")
     print("-For autonomous robot roomba mode, type... 3")
     print("-For a compliment, type... 4")
+    print("-To EXIT the program, type... 5")
     choice=raw_input("Type now.")
 
 
-    key="placeholder"
+    key="t"
 
     if choice=="1":
-
+        print("             ^             ")
+        print("    (O)------W------(0)    ")
+        print("    [----------------]     ")
+        print("<-A [----------------] D ->")
+        print("    [----------------]     ")
+        print("    (0)------S------(0)    ")
+        print("                           ")
+        print("Hold WASD to move. C stops. Z goes back to main menu")
         key=readchar.readkey()  #choose "hold down key" steering mode
 
     elif choice=="2":
-        key=raw_input("Enter command")  #choose hit "enter" steering mode
+        print("             ^             ")
+        print("    (O)------W------(0)    ")
+        print("    [----------------]     ")
+        print("<-A [----------------] D ->")
+        print("    [----------------]     ")
+        print("    (0)------S------(0)    ")
+        print("                           ")
+        print("Control with WASD. Hit enter to go. C stops. Z goes back to main menu")
+        key=raw_input("Enter command or press z and it return to exit")  #choose hit "enter" steering mode
+
     elif choice=="3":
         auto()
     elif choice=="4":
@@ -134,38 +152,52 @@ while True: #MODE SELECTION MENU
         sleep(2)
         print("Because you're already amazing!!! :D")
         sleep(1)
-        #MOTOR CONTROLS
-
-    if key=="w": #forward
-        print("forward")
-        fwd()
-        sensorf()        
-        stop()
-
-    elif key=="a": #left
-        print("left")
-        left()
-        sensorf()
-        stop()
-
-    elif key=="d": #right
-        print("right")
-        right()
-        sensorf()
-        stop()
-
-    elif key=="s": #reverse
-        print("reverse")
-        rev()
-        sensorf()
-        stop()
-
-    elif key=="c": #Everything off
-        stop()
-        
-    elif key=="z":
-        stop()
+    elif choice=="5":
+        print("Making motors safe. Exiting program.")
         GPIO.cleanup()
-        print("shutting down motors...")
-        sleep(1)
-        break   
+        break
+
+
+        
+        #MOTOR CONTROLS
+    if choice !="4":
+        while True:
+            if key=="w": #forward
+                print("forward")
+                fwd()
+                sensorf()        
+                stop()
+
+            elif key=="a": #left
+                print("left")
+                left()
+                sensorf()
+                stop()
+
+            elif key=="d": #right
+                print("right")
+                right()
+                sensorf()
+                stop()
+
+            elif key=="s": #reverse
+                print("reverse")
+                rev()
+                sensorf()
+                stop()
+
+            elif key=="c": #Everything off
+                stop()
+                
+            elif key=="z":
+                stop()
+                print("Thanks crazy driver. I had fun.")
+                sleep(1)
+                break
+
+            if choice=="1":
+
+                key=readchar.readkey()  #choose "hold down key" steering mode
+
+            elif choice=="2":
+                key=raw_input("Enter command")  #choose hit "enter" steering mode
