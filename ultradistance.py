@@ -35,25 +35,8 @@ def distcheck():
 
   print ("Distance:",distance,"cm")
   return distance
-  
-#the new bit that measures speed
 
-interval=int(input("Choose your interval time"))
-
-dist1=distcheck()
-
-time.sleep(interval)
-
-dist2=distcheck()
-
-
-displacement=dist2-dist1
-velocity=displacement/interval
-
-velocity = round(velocity, 2)
-
-print("Your velocity is")
-print(velocity)
+distcheck()
 
 GPIO.cleanup()
 

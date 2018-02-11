@@ -5,13 +5,13 @@ GPIO.setmode(GPIO.BCM)
 TRIG = 23 
 ECHO = 24
 
-print ("Distance Measurement In Progress")
+print "Distance Measurement In Progress"
 
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
 
 GPIO.output(TRIG, False)
-print ("Waiting For Sensor To Settle")
+print "Waiting For Sensor To Settle"
 time.sleep(2)
 
 
@@ -33,7 +33,7 @@ def distcheck():
 
   distance = round(distance, 2)
 
-  print ("Distance:",distance,"cm")
+  print "Distance:",distance,"cm"
   return distance
   
 #the new bit that measures speed
