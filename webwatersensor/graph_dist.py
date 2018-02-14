@@ -20,7 +20,7 @@ GPIO.output(TRIG, False)   #stops any echo from a previous program that might st
 
 firstrun = 1
 print ("Waiting For Sensor To Settle")
-sleep(2)
+sleep(3)
 
 
 plt.ion()
@@ -29,13 +29,15 @@ x = []  #placeholders for the graph later on
 y = []
 
 
-
-
 def distcheck():
   count = 0
   global firstrun
+  
+  maxTolerance = 1.3   #does not allow any measurement 30% above average
+  minTolerance = 0.7   #does not allow any measurement less than 70% below average
 
   while True:
+    sleep(0.1)
     GPIO.output(TRIG, True)  #fires a pulse
     sleep(0.00001)
     GPIO.output(TRIG, False)
@@ -80,13 +82,16 @@ def distcheck():
 
       print("Distance value 1:")
 
+
+
+
       #Error checking algorithm
       if firstrun == False: #if not the first set of 10 points
 
         
         check = distVal1/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -114,7 +119,7 @@ def distcheck():
         
         check = distVal2/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -143,7 +148,7 @@ def distcheck():
         
         check = distVal3/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -173,7 +178,7 @@ def distcheck():
         
         check = distVal4/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -200,7 +205,7 @@ def distcheck():
         
         check = distVal4/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -226,7 +231,7 @@ def distcheck():
         
         check = distVal5/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -251,7 +256,7 @@ def distcheck():
         
         check = distVal6/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -276,7 +281,7 @@ def distcheck():
         
         check = distVal7/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -301,7 +306,7 @@ def distcheck():
         
         check = distVal8/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -326,7 +331,7 @@ def distcheck():
         
         check = distVal8/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -351,7 +356,7 @@ def distcheck():
         
         check = distVal9/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
@@ -375,7 +380,7 @@ def distcheck():
         
         check = distVal10/average #compare this value to the last average of 10 points
 
-        if check < 0.95 or check > 1.05:  #if it's a change greater than +/- 5% (a likely error)
+        if check < minTolerance or check > maxTolerance:  #if it's a change greater than +/- 5% (a likely error)
 
           print("Anomoly!, skip this value")
           sleep(1)
