@@ -1,11 +1,15 @@
 #run in python 3
 
-from gpiozero import CPUTemperature #gpiozero module must be downloaded for py3
 import RPi.GPIO as GPIO
-
-
+import subprocess
+import smtplib
+import socket
+from email.mime.text import MIMEText
+import datetime
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt     #matplotlib module must be downloaded for py3
+import getpass
+
 
 GPIO.setmode(GPIO.BCM)
 print ("Distance Measurement In Progress")
@@ -59,9 +63,53 @@ def distcheck():
     return(distance)
 
 
+def send_mail_alert():
+  to = 'dcuish@gmail.com'
+  """
+  gmail_user = input("Enter full email eg. RPITime@gmail.com")
+  gmail_password = getpass.getpass()
+  """
+  smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
+  smtpserver.ehlo()
+  smtpserver.starttls()
+  smtpserver.login(gmail_user, gmail_password)
+  #today = datetime.date.today()
+
+
+  my_msg=("WARNING! Liquid Level limits exceeded. Disistance at " + str(mode) + "cm")
+  msg=MIMEText(my_msg)
+
+  msg['Subject']= 'Flood Warning'
+  msg['From']= "Liquid Bot"
+  msg['To'] = to
+  smtpserver.sendmail(gmail_user, [to], msg.as_string())
+  smtpserver.quit()
+  print("Email sent to " + str(to))
+
+
 ######################
 #program starts here
   #######################
+
+
+print("Welcome to liquid level meter")
+print("Turn on email alert?")
+choice=input("y/n?")
+
+if choice == "y":
+  mailAlert = 1 #on
+  print("Mail alerts on")
+  limit=input("Set a limit in cm to trigger an email alert eg. 5 ")
+
+
+  gmail_user = input("Enter full email eg. RPITime@gmail.com")
+  gmail_password = getpass.getpass(prompt="Type in your password")
+
+  
+elif choice == "n":
+  print("That's cool.")
+  mailAlert = 0 #off
+
 
 while True:
 
@@ -77,8 +125,13 @@ while True:
     mode = max(set(readings_list), key=readings_list.count)
     print("The mode of " + str(number_of_readings) + " values is " + str(mode))
 
-
-
+    if mode <10 and mailAlert == 1:  #sends email if dist <10cm
+      send_mail_alert()
+      sleep(5)
+      mailAlert = 0 #stops more than one email alert
+      
+      print("DANGEROUS LEVELS. EMAIL ALERT SENT>>>>>>>>")
+      
     #writes this data to a table (a .csv file)
     with open("cpu_dists.csv", "a") as log:   # "a" means append to the end
         log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(mode)))
