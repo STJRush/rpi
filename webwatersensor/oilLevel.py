@@ -1,3 +1,7 @@
+#Measures level of oil in a tank.
+#Uploads it to a graph on the web
+#Emails the user an alert if it gets too low
+
 #run in python 3
 
 import RPi.GPIO as GPIO
@@ -11,7 +15,7 @@ import getpass
 from urllib.request import urlopen
 import sys
 
-myAPI = "JDB150GBC7UT6MG7"  #your key from your own thingspeak account. Put yours here.
+myAPI = "K8WUBGW78DD3IOY6"  #your key from your own thingspeak account. Put yours here.
 
 
 
