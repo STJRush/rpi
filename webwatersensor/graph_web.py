@@ -11,6 +11,8 @@ import getpass
 from urllib.request import urlopen
 import sys
 
+
+
 myAPI = "JDB150GBC7UT6MG7"  #your key from your own thingspeak account. Put yours here.
 
 
@@ -89,15 +91,17 @@ def send_mail_alert():  #function to send email alert
 
 
 def updateThingSpeak(): #sends data to a webpage
-   print('starting...') 
+   print('starting upload of data to thingspeak...') 
    baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI  
 
 
    try:
        print("The mode being sent to the web is " + str(mode) + "cm") 
-       f = urlopen(baseURL + "&field1=%s" % (str(mode))) 
+       f = urlopen(baseURL + "&field1=%s" % (str(mode)))
+       print("Data point will be called..") 
        print (f.read()) 
        f.close() 
+       print("Hey it worked! Check your thingspeak channel webpage!")
        sleep(30) #uploads sensor values every 30 secs
    except: 
        print('oops that did not work...') 
@@ -131,8 +135,10 @@ print("Do you want to send results to a webpage?")  #choose to turn graphing on 
 graph_choice=input("y/n?")
 
 print("Okay, hang on, we're going to take some measurements now.")
+print("This should take about 100 seconds for all 50 readings")
+print("Starting measurement at " + strftime("%H:%M:%S") + "hrs")
 
-datacount = 0 #for no graph mode, a measurement count is handy to know how long
+datacount = 0 #a measurement count is handy to know how long
 #the sensor has been running. This delcares a variable to count measurments.
 
 while True:
@@ -163,8 +169,36 @@ while True:
 
     if graph_choice == "y":
       
+       #The datetime code below helps show if the program has frozen
+       #You can check when they code tried to run against your watch
+ 
+       now=datetime.datetime.now()
        updateThingSpeak()
-       sleep(3000) #wait 50 mins before taking the next value
+       print(str(now))
+       print("Sending next measurement in 50mins")
+       sleep(600) #wait 50 mins before taking the next value
+       print(str(datetime.datetime.now()))
+       print("Sending next measurement in 40mins")
+       sleep(600)
+       print(str(datetime.datetime.now()))
+       print("30mins")
+       sleep(600)
+       print(str(datetime.datetime.now()))
+       print("20mins")
+       sleep(600)
+       print(str(datetime.datetime.now()))
+       print("10mins")
+       sleep(300)
+       print(str(datetime.datetime.now()))
+       print("5mins")
+       sleep(220)
+       print(str(datetime.datetime.now()))
+       print("1min")
+       sleep(30)
+       print(str(datetime.datetime.now()))
+       print("30sec")
+       datacount=datacount+1
+       print("Measruement " +str(datacount))
 
     elif graph_choice == "n":
       datacount=datacount+1
