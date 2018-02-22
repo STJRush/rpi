@@ -115,7 +115,7 @@ def updateThingSpeak(): #sends data to a webpage
 print("#_                                                                       d  ")
 print("##_                                                                     d#  ")
 print("NN#p                                                                  j0NN  ")
-print("40NNh_                    "Liquid Level Meter"                       _gN#B0  ")
+print("40NNh_                    "+"Liquid Level Meter"+"                   _gN#B0  ")
 print("4JF@NNp_                                                          _g0WNNL@  ")
 print("JLE5@WRNp_                                                      _g@NNNF3_L  ")
 print("_F`@q4WBN@Np_                                                _gNN@ZL#piFj_  ")
