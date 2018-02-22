@@ -112,9 +112,34 @@ def updateThingSpeak(): #sends data to a webpage
 #program starts here
   #######################
 
+print("#_                                                                       d  ")
+print("##_                                                                     d#  ")
+print("NN#p                                                                  j0NN  ")
+print("40NNh_                    "Liquid Level Meter"                       _gN#B0  ")
+print("4JF@NNp_                                                          _g0WNNL@  ")
+print("JLE5@WRNp_                                                      _g@NNNF3_L  ")
+print("_F`@q4WBN@Np_                                                _gNN@ZL#piFj_  ")
+print("i0^#-LJ_9iNNNMp__                                         _gN#@#iR_#g@q^9i  ")
+print(" a0,3_j_j_9FN@N@0NMp__                                __ggNZNrNMiP_f_f_E,0a  ")
+print("  j  L 6 9iiQi#^q@NDNNNMpg____                ____gggNNW#W4p^p@jF^P^]^j  F  ")
+print(" rNrr4r*pr4r@grNr@q@Ng@q@N0@N#@NNMpmggggmqgNN@NN@#@4p*@M@p4qp@w@m@Mq@r#rq@r  ")
+print("   F Jp 9__b__M,Juw*w*^#^9#^^EED*dP_@EZ@^E@*#EjP^5M^gM@p*Ww&,jL_J__f  F j  ")
+print(" -r#^^0^^E^ 6  q  q__hg-@4^^*,_Z*q_^^pwr^^p*C__@^^0N-qdL_p^ p  J^ 3^^5^^0r-  ")
+print("   t  J  __,Jb--N^^^,  *_s0M`^^q_a@NW__JP^u_p^^^p4a,p^ _F^^V--wL,_F_ F  #  ")
+print(" _,Jp*^#^^9   L  5_a*N^^^q__INr^ ^q_e^^*,p^^^qME_ y^^^p6u,f  j^  f *N^--LL_  ")
+print("    L  ]   k,w@#^^^_  ^_a*^E   ba-^ ^qj-^^^pe^  J^-u_f  _f ^q@w,j   f  jL  ")
+print("    #_,J@^^^p  `_ _jp-^^q  _Dw^^ ^cj*^^*,j^  ^p#_  y^^^wE_ _F   F^^qN,_j  ")
+print(" w*^0   4   9__sAF^ `L  _Dr*  m__m^^q__a^^m__*  ^qA_  j^ ^^Au__f   J   0^--  ")
+print("    ]   J_,x-E   3_  jN^^ `u _w^*_  _RR_  _J^w_ j^  ^pL_  f   7^-L_F   #  ")
+print("    jLs*^6   `_  _&*^  q  _,NF   ^wp^  ^*g^   _NL_  p  ^-d_   F   ]^*u_F  ")
+print(" ,x-*F   ]    Ax^* q    hp*  `u jM**u  a^ ^, j*  **g_   p  *mg_   D.H.     ")
 
-print("Welcome to liquid level meter")
-print("Turn on email alert?")
+print("Welcome to Liquid Level Meter")
+
+print("This program uses a Raspberry Pi with an ultrasonic sensor to measure")
+print(" liquid levels in an oil tank, septic tank or a similar container.")
+
+print("Send an email alert if distance to sensor gets very small? (OVERFLOW WARNING)")
 email_choice=input("y/n?")
 
 if email_choice == "y": #choose to turn email alerts on or off
@@ -131,7 +156,7 @@ elif email_choice == "n":
   print("That's cool.")
   mailAlert = 0 #off
 
-print("Do you want to send results to a webpage?")  #choose to turn graphing on or off
+print("Do you want to graph measurments on the thingspeak webpage?")  #choose to turn graphing on or off
 graph_choice=input("y/n?")
 
 print("Okay, hang on, we're going to take some measurements now.")
@@ -180,27 +205,28 @@ while True:
        print(str(datetime.datetime.now()))
        print("Sending next measurement in 40mins")
        sleep(600)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("30mins")
        sleep(600)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("20mins")
        sleep(600)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("10mins")
        sleep(300)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("5mins")
        sleep(220)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("1min")
        sleep(30)
-       print(str(datetime.datetime.now()))
+       print(strftime("%H:%M:%S"))
        print("30sec")
        datacount=datacount+1
-       print("Measruement " +str(datacount))
+       print("Measurement " +str(datacount))
 
     elif graph_choice == "n":
       datacount=datacount+1
       print("Measurement " + str(datacount))
+      print(strftime("%H:%M:%S"))
 
