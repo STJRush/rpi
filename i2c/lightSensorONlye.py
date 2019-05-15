@@ -5,9 +5,9 @@ import smbus
 from time import sleep
 
 port = 1
-bus = smbus.SMBus(port)
+bus2 = smbus.SMBus(port)
 
-apds = APDS9960(bus)
+apds = APDS9960(bus2)
 
 def intH(channel):
     print("INTERRUPT")
