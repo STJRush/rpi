@@ -1,8 +1,9 @@
-import Adafruit_DHT
-...
-sensor = Adafruit_DHT.DHT11
+import Adafruit_DHT as DHT
+
+sensor = DHT.DHT11
 pin = 4
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+
+humidity, temperature = DHT.read(sensor, pin)
 
 print(humidity)
 print(temperature)

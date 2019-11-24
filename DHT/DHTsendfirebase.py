@@ -1,42 +1,42 @@
-import Adafruit_DHT
+import Adafruit_DHT as DHT
 from time import sleep
 from firebase import firebase
 
 
 #API KEY
-firebase = firebase.FirebaseApplication('https://webapptest-97c23.firebaseio.com', None)
+firebase = firebase.FirebaseApplication('https://rpitempdata.firebaseio.com', None)
+
+while True:
+    humid, temp = DHT.read_retry(DHT.DHT11, 4)
+
+    print("Let's start with getting python to read from the sensor..")
+    print("humidity is", humid)
+    print("temperature is", temp)
+
+    #####
 
 
-...
-sensor = Adafruit_DHT.DHT11
-pin = 4
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    print("Now let's upload that to Firebase")
+    #Patches on extra data from our temp and humidity variables at the top of the program, simulated sensor readings
+    result = firebase.patch('/sensor/dht/', {'Temperature': temp, 'Humidity': humid})
 
-print("Let's start with getting python to read from the sensor..")
-print("humidity is", humidity)
-print("teperature is", temperature)
+    sleep(2)
+    print("Give it a moment to upload...")
+    sleep(2)
 
-#####
+    print("Okay Done")
+    print("Now seeing if we can read from the database...")
 
+    print("The last uploaded temperature was:")
+    result = firebase.get('/sensor/dht/Temperature', None)
+    print(result)
 
-print("Now let's upload that to Firebase")
-#Patches on extra data from our temp and humidity variables at the top of the program, simulated sensor readings
-result = firebase.patch('/sensor/dht/', {'Temperature': temperature, 'Humidity': humidity})
+    print("The last uploaded humidity was:")
+    result = firebase.get('/sensor/dht/Humidity', None)
+    print(result)
 
-sleep(2)
-print("Give it a second...")
-sleep(2)
+    sleep(3)
+    print("program done")
 
-print("Okay Done")
-print("Now seeing if we can read from the database")
+    sleep(1000)
 
-print("The last uploaded temperature was:")
-result = firebase.get('/sensor/dht/Temperature', None)
-print(result)
-
-print("The last uploaded humidity was:")
-result = firebase.get('/sensor/dht/Humidity', None)
-print(result)
-
-sleep(3)
-print("program done")
